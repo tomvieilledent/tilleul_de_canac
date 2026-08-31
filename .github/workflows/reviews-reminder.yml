@@ -31,7 +31,7 @@ jobs:
               "",
               "1. Ouvrir la page avis Booking :",
               "   https://www.booking.com/hotel/fr/chambre-d-39-hote-rodez.fr.html#tab-reviews",
-              "2. Dans `data/reviews.json`, garder les **5 avis les plus récents**",
+              "2. Dans `public/data/reviews.json`, garder les **5 avis les plus récents**",
               "   (le plus récent en premier). Mettre à jour `score` et `count` si besoin.",
               "3. Renseigner `updated` avec la date du jour (format ISO).",
               "4. Commit + push sur `main`. Le site se redéploie tout seul.",

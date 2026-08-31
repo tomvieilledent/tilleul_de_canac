@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const OUT = join(__dirname, "..", "data", "availability.json");
+const OUT = join(__dirname, "..", "public", "data", "availability.json");
 const BOOKING_PAGE =
   "https://www.booking.com/hotel/fr/chambre-d-39-hote-rodez.fr.html";
 
@@ -105,7 +105,7 @@ async function main() {
 
   writeFileSync(OUT, JSON.stringify(payload, null, 2) + "\n");
   console.log(
-    `OK : ${booked.length} plage(s) indisponible(s) écrite(s) dans data/availability.json`
+    `OK : ${booked.length} plage(s) indisponible(s) écrite(s) dans public/data/availability.json`
   );
 }
 

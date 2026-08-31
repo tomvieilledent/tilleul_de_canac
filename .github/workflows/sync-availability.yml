@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Générer data/availability.json depuis l'iCal Booking
+      - name: Générer public/data/availability.json depuis l'iCal Booking
         env:
           BOOKING_ICAL_URL: ${{ secrets.BOOKING_ICAL_URL }}
           CI: "true"
@@ -30,10 +30,10 @@ jobs:
 
       - name: Commit si changement
         run: |
-          if [[ -n "$(git status --porcelain data/availability.json)" ]]; then
+          if [[ -n "$(git status --porcelain public/data/availability.json)" ]]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add data/availability.json
+            git add public/data/availability.json
             git commit -m "chore(dispos): synchronise le calendrier Booking"
             git push
           else

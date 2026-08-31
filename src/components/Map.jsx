@@ -1,15 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useApp } from "../app/store.jsx";
 import { MAP, CONTACT } from "../lib/site.js";
 
 export default function Map() {
   const { t } = useApp();
-  const [shown, setShown] = useState(false);
   const nodeRef = useRef(null);
   const mapRef = useRef(null);
 
   useEffect(() => {
-    if (!shown) return;
     let cancelled = false;
 
     (async () => {
@@ -17,7 +15,7 @@ export default function Map() {
         import("leaflet"),
         import("leaflet/dist/leaflet.css"),
       ]);
-      if (cancelled || !nodeRef.current) return;
+      if (cancelled || !nodeRef.current || mapRef.current) return;
 
       const pin = L.divIcon({
         className: "map-pin",
@@ -54,23 +52,7 @@ export default function Map() {
         mapRef.current = null;
       }
     };
-  }, [shown]);
-
-  if (!shown) {
-    return (
-      <div className="map-consent">
-        <p className="map-address">
-          {CONTACT.address1}
-          <br />
-          {CONTACT.address2}
-        </p>
-        <p className="map-notice">{t("surroundings.mapNotice")}</p>
-        <button type="button" className="btn btn-small" onClick={() => setShown(true)}>
-          {t("surroundings.mapCta")}
-        </button>
-      </div>
-    );
-  }
+  }, []);
 
   return <div className="map" ref={nodeRef} role="application" aria-label={t("surroundings.mapAlt")} />;
 }

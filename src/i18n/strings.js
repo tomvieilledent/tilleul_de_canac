@@ -80,9 +80,6 @@ const fr = {
       { place: "Musée Soulages", value: "2 km" },
       { place: "Golf", value: "2 km" },
     ],
-    mapCta: "Afficher la carte",
-    mapNotice:
-      "En affichant la carte, une connexion est établie avec OpenStreetMap, qui reçoit votre adresse IP pour fournir les fonds de plan.",
     mapAlt: "Carte de localisation — 270 chemin de Canac, Onet-le-Château",
   },
   booking: {
@@ -137,7 +134,7 @@ const fr = {
     privacyBody: [
       "Ce site n'utilise aucun cookie publicitaire ni outil de mesure d'audience. Aucune donnée personnelle n'est collectée à des fins commerciales.",
       "Préférences : votre choix de langue et de thème est enregistré dans le stockage local de votre navigateur (localStorage). Ce stockage est strictement nécessaire au fonctionnement du site et ne requiert pas de consentement ; vous pouvez l'effacer via les réglages de votre navigateur.",
-      "Carte : la carte de localisation ne se charge qu'après un clic de votre part. Elle établit alors une connexion aux serveurs de la Fondation OpenStreetMap, qui reçoit votre adresse IP pour fournir les fonds de plan.",
+      "Carte : la carte de localisation charge ses fonds de plan depuis les serveurs de la Fondation OpenStreetMap, qui reçoit alors votre adresse IP. Aucune autre donnée n'est transmise.",
       "Réservation : le bouton « Réserver » redirige vers Booking.com, responsable du traitement des données que vous y saisissez.",
       "Contact : pour toute question relative à vos données, écrivez à lbcmarie.12@gmail.com.",
     ],
@@ -216,9 +213,6 @@ const en = {
       { place: "Soulages museum", value: "2 km" },
       { place: "Golf course", value: "2 km" },
     ],
-    mapCta: "Show the map",
-    mapNotice:
-      "Showing the map opens a connection to OpenStreetMap, which receives your IP address to serve the map tiles.",
     mapAlt: "Location map — 270 chemin de Canac, Onet-le-Château",
   },
   booking: {
@@ -273,7 +267,7 @@ const en = {
     privacyBody: [
       "This site uses no advertising cookies and no analytics tools. No personal data is collected for commercial purposes.",
       "Preferences: your language and theme choices are stored in your browser's local storage (localStorage). This storage is strictly necessary for the site to work and requires no consent; you can clear it in your browser settings.",
-      "Map: the location map only loads after you click. It then opens a connection to the OpenStreetMap Foundation servers, which receive your IP address to serve the map tiles.",
+      "Map: the location map loads its tiles from the OpenStreetMap Foundation servers, which then receive your IP address. No other data is sent.",
       "Booking: the “Book” button redirects to Booking.com, which is the controller for any data you enter there.",
       "Contact: for any question about your data, write to lbcmarie.12@gmail.com.",
     ],
@@ -352,9 +346,6 @@ const es = {
       { place: "Museo Soulages", value: "2 km" },
       { place: "Campo de golf", value: "2 km" },
     ],
-    mapCta: "Mostrar el mapa",
-    mapNotice:
-      "Al mostrar el mapa se establece una conexión con OpenStreetMap, que recibe su dirección IP para servir el mapa.",
     mapAlt: "Mapa de ubicación — 270 chemin de Canac, Onet-le-Château",
   },
   booking: {
@@ -409,7 +400,7 @@ const es = {
     privacyBody: [
       "Este sitio no utiliza cookies publicitarias ni herramientas de analítica. No se recopilan datos personales con fines comerciales.",
       "Preferencias: su elección de idioma y de tema se guarda en el almacenamiento local del navegador (localStorage). Este almacenamiento es estrictamente necesario para el funcionamiento del sitio y no requiere consentimiento; puede borrarlo desde los ajustes del navegador.",
-      "Mapa: el mapa de ubicación solo se carga tras hacer clic. Entonces se establece una conexión con los servidores de la Fundación OpenStreetMap, que recibe su dirección IP para servir el mapa.",
+      "Mapa: el mapa de ubicación carga sus teselas desde los servidores de la Fundación OpenStreetMap, que reciben entonces su dirección IP. No se envía ningún otro dato.",
       "Reserva: el botón «Reservar» redirige a Booking.com, responsable del tratamiento de los datos que introduzca allí.",
       "Contacto: para cualquier consulta sobre sus datos, escriba a lbcmarie.12@gmail.com.",
     ],
@@ -488,9 +479,6 @@ const de = {
       { place: "Soulages-Museum", value: "2 km" },
       { place: "Golfplatz", value: "2 km" },
     ],
-    mapCta: "Karte anzeigen",
-    mapNotice:
-      "Beim Anzeigen der Karte wird eine Verbindung zu OpenStreetMap hergestellt, das Ihre IP-Adresse erhält, um die Kartenkacheln zu laden.",
     mapAlt: "Standortkarte — 270 chemin de Canac, Onet-le-Château",
   },
   booking: {
@@ -545,7 +533,7 @@ const de = {
     privacyBody: [
       "Diese Website verwendet keine Werbe-Cookies und keine Analyse-Tools. Es werden keine personenbezogenen Daten zu kommerziellen Zwecken erhoben.",
       "Einstellungen: Ihre Sprach- und Themenwahl wird im lokalen Speicher Ihres Browsers (localStorage) gespeichert. Dieser Speicher ist für den Betrieb der Website unbedingt erforderlich und bedarf keiner Einwilligung; Sie können ihn in den Browsereinstellungen löschen.",
-      "Karte: Die Standortkarte wird erst nach einem Klick geladen. Dabei wird eine Verbindung zu den Servern der OpenStreetMap Foundation hergestellt, die Ihre IP-Adresse erhält, um die Kartenkacheln zu laden.",
+      "Karte: Die Standortkarte lädt ihre Kacheln von den Servern der OpenStreetMap Foundation, die dabei Ihre IP-Adresse erhalten. Weitere Daten werden nicht übertragen.",
       "Buchung: Die Schaltfläche „Buchen“ leitet zu Booking.com weiter, das für die dort eingegebenen Daten verantwortlich ist.",
       "Kontakt: Bei Fragen zu Ihren Daten schreiben Sie an lbcmarie.12@gmail.com.",
     ],

@@ -21,7 +21,7 @@
   --day-free-fg: #2d4632;
   --day-booked-a: #e6dccb;
   --day-booked-b: #d6c9b2;
-  --day-booked-fg: #7c715c;
+  --day-booked-fg: #514835;
 
   --radius: 12px;
   --shadow: 0 8px 28px rgba(45, 70, 50, 0.12);
@@ -52,7 +52,7 @@
   --day-free-fg: #cfe6d2;
   --day-booked-a: #2a2f33;
   --day-booked-b: #343a3f;
-  --day-booked-fg: #8b8b81;
+  --day-booked-fg: #a7a79c;
 
   --shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
 }
@@ -481,7 +481,7 @@ p code, .note code {
   background: var(--bg-alt);
 }
 .cal-day.is-empty { background: transparent; }
-.cal-day.is-past { background: transparent; color: var(--text-muted); text-decoration: line-through; opacity: 0.6; }
+.cal-day.is-past { background: transparent; color: var(--text-muted); text-decoration: line-through; }
 .cal-day.is-free { background: var(--day-free-bg); color: var(--day-free-fg); font-weight: 600; }
 .cal-day.is-booked {
   background: repeating-linear-gradient(-45deg, var(--day-booked-a), var(--day-booked-a) 4px, var(--day-booked-b) 4px, var(--day-booked-b) 8px);

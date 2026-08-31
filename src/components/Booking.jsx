@@ -8,37 +8,51 @@ import {
 
 const MONTHS_TO_SHOW = 2;
 
+function toWeeks(cells) {
+  const weeks = [];
+  for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
+  return weeks;
+}
+
 function Month({ year, month, ranges, today, locale, t, weekdays }) {
+  const label = monthLabel(locale, year, month);
   return (
-    <div className="cal-month">
-      <h4>{monthLabel(locale, year, month)}</h4>
-      <div className="cal-grid" role="grid" aria-label={monthLabel(locale, year, month)}>
-        {weekdays.map((d) => (
-          <div className="cal-dow" role="columnheader" key={d}>{d}</div>
+    <table className="cal-table">
+      <caption>{label}</caption>
+      <thead>
+        <tr>
+          {weekdays.map((d) => (
+            <th key={d} scope="col">{d}</th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {toWeeks(monthGrid(year, month)).map((week, wi) => (
+          <tr key={wi}>
+            {week.map((day, di) => {
+              if (!day) return <td key={di} className="cal-day is-empty" aria-hidden="true" />;
+              const past = day < today;
+              const booked = !past && isBooked(day, ranges);
+              const state = past ? "" : booked ? t("booking.dayBooked") : t("booking.dayFree");
+              const cls =
+                "cal-day" +
+                (past ? " is-past" : booked ? " is-booked" : " is-free") +
+                (sameDay(day, today) ? " is-today" : "");
+              return (
+                <td
+                  key={di}
+                  className={cls}
+                  aria-label={state ? `${longDate(locale, day)} — ${state}` : longDate(locale, day)}
+                  aria-current={sameDay(day, today) ? "date" : undefined}
+                >
+                  <span aria-hidden="true">{day.getDate()}</span>
+                </td>
+              );
+            })}
+          </tr>
         ))}
-        {monthGrid(year, month).map((day, i) => {
-          if (!day) return <div className="cal-day is-empty" key={`e${i}`} aria-hidden="true" />;
-          const past = day < today;
-          const booked = !past && isBooked(day, ranges);
-          const state = past ? "" : booked ? t("booking.dayBooked") : t("booking.dayFree");
-          const cls =
-            "cal-day" +
-            (past ? " is-past" : booked ? " is-booked" : " is-free") +
-            (sameDay(day, today) ? " is-today" : "");
-          return (
-            <div
-              className={cls}
-              key={day.toISOString()}
-              role="gridcell"
-              aria-label={state ? `${longDate(locale, day)} — ${state}` : longDate(locale, day)}
-              aria-disabled={past || booked ? "true" : undefined}
-            >
-              {day.getDate()}
-            </div>
-          );
-        })}
-      </div>
-    </div>
+      </tbody>
+    </table>
   );
 }
 

@@ -444,15 +444,21 @@ p code, .note code {
 .calendar-loading, .calendar-error { color: var(--text-muted); padding: 16px 0; }
 .calendar-error { color: var(--accent); }
 .calendar-months { display: grid; gap: 24px; }
-.cal-month h4 {
+.cal-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+}
+.cal-table caption {
+  caption-side: top;
+  text-align: left;
   font-family: var(--font-serif);
   font-size: 1.15rem;
   color: var(--heading);
-  margin: 0 0 10px;
+  margin-bottom: 6px;
 }
-.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
-.cal-dow {
-  text-align: center;
+.cal-table th {
   font-size: 0.68rem;
   font-weight: 700;
   color: var(--text-muted);
@@ -460,11 +466,9 @@ p code, .note code {
   padding-bottom: 3px;
 }
 .cal-day {
-  aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   font-size: 0.85rem;
+  padding: 8px 0;
   border-radius: 7px;
   background: var(--bg-alt);
 }

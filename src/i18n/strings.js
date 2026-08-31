@@ -108,7 +108,7 @@ const fr = {
     phone: "Téléphone",
     email: "E-mail",
     languages: "Langues parlées",
-    languagesValue: "Français, anglais, espagnol, allemand",
+    languagesValue: "Français, anglais, espagnol",
     knowEyebrow: "Bon à savoir",
     knowTitle: "Informations pratiques",
     practical: [
@@ -244,7 +244,7 @@ const en = {
     phone: "Phone",
     email: "E-mail",
     languages: "Languages spoken",
-    languagesValue: "French, English, Spanish, German",
+    languagesValue: "French, English, Spanish",
     knowEyebrow: "Good to know",
     knowTitle: "Practical information",
     practical: [
@@ -380,7 +380,7 @@ const es = {
     phone: "Teléfono",
     email: "Correo electrónico",
     languages: "Idiomas hablados",
-    languagesValue: "Francés, inglés, español, alemán",
+    languagesValue: "Francés, inglés, español",
     knowEyebrow: "Bueno saber",
     knowTitle: "Información práctica",
     practical: [
@@ -516,7 +516,7 @@ const de = {
     phone: "Telefon",
     email: "E-Mail",
     languages: "Gesprochene Sprachen",
-    languagesValue: "Französisch, Englisch, Spanisch, Deutsch",
+    languagesValue: "Französisch, Englisch, Spanisch",
     knowEyebrow: "Gut zu wissen",
     knowTitle: "Praktische Informationen",
     practical: [

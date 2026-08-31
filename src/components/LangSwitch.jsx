@@ -13,7 +13,7 @@ export default function LangSwitch() {
       >
         {langs.map((l) => (
           <option key={l.key} value={l.key}>
-            {l.key.toUpperCase()} · {l.name}
+            {l.key.toUpperCase()}
           </option>
         ))}
       </select>

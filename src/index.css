@@ -208,10 +208,15 @@ p { margin: 0 0 1rem; }
 .brand-mark { color: var(--btn-bg); display: inline-flex; }
 .brand-text {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 .brand-text span { color: var(--text-muted); font-weight: 400; }
+
+@media (max-width: 400px) {
+  .brand-text span { display: none; }
+}
 
 .header-tools {
   display: flex;

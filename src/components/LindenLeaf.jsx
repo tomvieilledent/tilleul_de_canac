@@ -1,14 +1,17 @@
-/** Feuille de tilleul (cordée, dentée) — hérite de `currentColor`. */
-export default function LindenLeaf({ size = 26, className, title = "Feuille de tilleul" }) {
+/** Feuille de tilleul (cordée, dentée) — hérite de `currentColor`.
+ *  Sans `title`, la feuille est purement décorative. */
+export default function LindenLeaf({ size = 26, className, title }) {
+  const labelled = title ? { role: "img", "aria-label": title } : { "aria-hidden": "true" };
+
   return (
     <svg
       className={className}
       width={size}
       height={size}
       viewBox="0 0 64 64"
-      role="img"
-      aria-label={title}
       fill="none"
+      focusable="false"
+      {...labelled}
     >
       <path
         d="M32 5c7 8 19 12 22 26 2 11-9 19-16 20-3 .5-5-2-6-5-1 3-3 5.5-6 5-7-1-18-9-16-20C6.9 17 25 13 32 5Z"

@@ -1,35 +1,38 @@
+import { useApp } from "../app/store.jsx";
 import { useJson } from "../hooks/useJson.js";
 import { BOOKING_URL } from "../lib/site.js";
 import {
-  DOW, MONTHS, toDate, startOfToday, sameDay, isBooked, monthGrid,
+  toDate, startOfToday, sameDay, isBooked, monthGrid,
+  weekdayNames, monthLabel, longDate, dateTime,
 } from "../lib/calendar.js";
 
 const MONTHS_TO_SHOW = 2;
 
-function Month({ year, month, ranges, today }) {
+function Month({ year, month, ranges, today, locale, t, weekdays }) {
   return (
     <div className="cal-month">
-      <h4>{`${MONTHS[month]} ${year}`}</h4>
-      <div className="cal-grid">
-        {DOW.map((d) => (
-          <div className="cal-dow" key={d}>{d}</div>
+      <h4>{monthLabel(locale, year, month)}</h4>
+      <div className="cal-grid" role="grid" aria-label={monthLabel(locale, year, month)}>
+        {weekdays.map((d) => (
+          <div className="cal-dow" role="columnheader" key={d}>{d}</div>
         ))}
         {monthGrid(year, month).map((day, i) => {
-          if (!day) return <div className="cal-day is-empty" key={`e${i}`} />;
-          let cls = "cal-day";
-          let label;
-          if (day < today) {
-            cls += " is-past";
-          } else if (isBooked(day, ranges)) {
-            cls += " is-booked";
-            label = `${day.getDate()} ${MONTHS[month]} — indisponible`;
-          } else {
-            cls += " is-free";
-            label = `${day.getDate()} ${MONTHS[month]} — disponible`;
-          }
-          if (sameDay(day, today)) cls += " is-today";
+          if (!day) return <div className="cal-day is-empty" key={`e${i}`} aria-hidden="true" />;
+          const past = day < today;
+          const booked = !past && isBooked(day, ranges);
+          const state = past ? "" : booked ? t("booking.dayBooked") : t("booking.dayFree");
+          const cls =
+            "cal-day" +
+            (past ? " is-past" : booked ? " is-booked" : " is-free") +
+            (sameDay(day, today) ? " is-today" : "");
           return (
-            <div className={cls} key={day.toISOString()} aria-label={label}>
+            <div
+              className={cls}
+              key={day.toISOString()}
+              role="gridcell"
+              aria-label={state ? `${longDate(locale, day)} — ${state}` : longDate(locale, day)}
+              aria-disabled={past || booked ? "true" : undefined}
+            >
               {day.getDate()}
             </div>
           );
@@ -40,14 +43,13 @@ function Month({ year, month, ranges, today }) {
 }
 
 export default function Booking() {
+  const { t, locale } = useApp();
   const { data, error } = useJson("data/availability.json");
 
   const today = startOfToday();
-  const ranges = (data?.booked || []).map((r) => ({
-    start: toDate(r.start),
-    end: toDate(r.end),
-  }));
+  const ranges = (data?.booked || []).map((r) => ({ start: toDate(r.start), end: toDate(r.end) }));
   const bookingUrl = data?.bookingUrl || BOOKING_URL;
+  const weekdays = weekdayNames(locale);
 
   const months = [];
   const cursor = new Date(today.getFullYear(), today.getMonth(), 1);
@@ -58,60 +60,53 @@ export default function Booking() {
 
   const updated =
     data?.updated && !Number.isNaN(new Date(data.updated).valueOf())
-      ? new Date(data.updated).toLocaleDateString("fr-FR", {
-          day: "numeric", month: "long", year: "numeric",
-          hour: "2-digit", minute: "2-digit",
-        })
+      ? dateTime(locale, new Date(data.updated))
       : null;
 
   return (
-    <section id="reservation" className="section section-alt">
+    <section id="reservation" className="section section-alt" aria-labelledby="reservation-title">
       <div className="container">
-        <p className="eyebrow">Disponibilités &amp; réservation</p>
-        <h2>Vérifiez les dates libres</h2>
-        <p className="section-intro">
-          Le calendrier ci-dessous est synchronisé avec l'agenda Booking de la chambre d'hôtes. Les
-          dates <strong>indisponibles</strong> apparaissent grisées. La réservation et le paiement se
-          font sur Booking.
-        </p>
+        <p className="eyebrow">{t("booking.eyebrow")}</p>
+        <h2 id="reservation-title">{t("booking.title")}</h2>
+        <p className="section-intro">{t("booking.intro")}</p>
 
         <div className="booking-block">
-          <div className="calendar" aria-live="polite">
+          <div className="calendar">
             {error ? (
-              <p className="calendar-error">
-                Le calendrier n'a pas pu être chargé. Consultez directement les disponibilités sur{" "}
-                <a href={bookingUrl} target="_blank" rel="noopener">Booking.com</a>.
+              <p className="calendar-error" role="status">
+                {t("booking.error")}{" "}
+                <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Booking.com</a>
               </p>
             ) : !data ? (
-              <p className="calendar-loading">Chargement du calendrier…</p>
+              <p className="calendar-loading" role="status">{t("booking.loading")}</p>
             ) : (
               <div className="calendar-months">
                 {months.map((m) => (
                   <Month
                     key={`${m.year}-${m.month}`}
-                    year={m.year}
-                    month={m.month}
+                    {...m}
                     ranges={ranges}
                     today={today}
+                    locale={locale}
+                    t={t}
+                    weekdays={weekdays}
                   />
                 ))}
               </div>
             )}
           </div>
 
-          <aside className="booking-cta">
-            <h3>Réserver</h3>
-            <p>Choisissez vos dates et finalisez votre séjour en quelques clics sur Booking.</p>
-            <a className="btn btn-block" href={bookingUrl} target="_blank" rel="noopener">
-              Réserver sur Booking.com
+          <aside className="booking-cta" aria-label={t("booking.reserveTitle")}>
+            <h3>{t("booking.reserveTitle")}</h3>
+            <p>{t("booking.reserveText")}</p>
+            <a className="btn btn-block" href={bookingUrl} target="_blank" rel="noopener noreferrer">
+              {t("booking.reserveBtn")}
             </a>
             <p className="booking-legend">
-              <span className="swatch swatch-free" /> Disponible
-              <span className="swatch swatch-booked" /> Indisponible
+              <span className="swatch swatch-free" aria-hidden="true" /> {t("booking.legendFree")}
+              <span className="swatch swatch-booked" aria-hidden="true" /> {t("booking.legendBooked")}
             </p>
-            {updated && (
-              <p className="booking-updated">Disponibilités mises à jour le {updated}</p>
-            )}
+            {updated && <p className="booking-updated">{t("booking.updated")} {updated}</p>}
           </aside>
         </div>
       </div>

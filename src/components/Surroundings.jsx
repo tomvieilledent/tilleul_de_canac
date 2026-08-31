@@ -1,25 +1,24 @@
-import { DISTANCES } from "../lib/site.js";
+import { useApp } from "../app/store.jsx";
 import Map from "./Map.jsx";
 
 export default function Surroundings() {
+  const { t } = useApp();
+
   return (
-    <section id="environs" className="section">
+    <section id="environs" className="section" aria-labelledby="environs-title">
       <div className="container grid-2">
         <div>
-          <p className="eyebrow">Les environs</p>
-          <h2>Tout est à quelques minutes</h2>
+          <p className="eyebrow">{t("surroundings.eyebrow")}</p>
+          <h2 id="environs-title">{t("surroundings.title")}</h2>
           <ul className="distance-list">
-            {DISTANCES.map((d) => (
+            {t("surroundings.distances").map((d) => (
               <li key={d.place}>
                 <span>{d.place}</span>
                 <span>{d.value}</span>
               </li>
             ))}
           </ul>
-          <p>
-            Aux alentours, profitez de la randonnée pédestre, de la pêche et de balades à vélo. Le
-            centre historique de Rodez, ses ruelles et ses musées se visitent facilement à pied.
-          </p>
+          <p>{t("surroundings.p")}</p>
         </div>
         <div className="map-wrap">
           <Map />

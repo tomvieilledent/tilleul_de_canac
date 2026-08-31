@@ -1,27 +1,14 @@
+import { useApp } from "../app/store.jsx";
 import { useJson } from "../hooks/useJson.js";
 import { BOOKING_REVIEWS_URL } from "../lib/site.js";
-import { MONTHS } from "../lib/calendar.js";
+import { longDate } from "../lib/calendar.js";
 
 const MAX = 5;
-
-function fmtDate(d) {
-  if (!d) return "";
-  const p = String(d).split("-");
-  const short = [
-    "janv.", "févr.", "mars", "avr.", "mai", "juin",
-    "juil.", "août", "sept.", "oct.", "nov.", "déc.",
-  ];
-  if (p.length >= 2) {
-    const m = short[+p[1] - 1] || MONTHS[+p[1] - 1] || "";
-    return `${p.length >= 3 ? p[2] + " " : ""}${m} ${p[0]}`;
-  }
-  return String(d);
-}
-
 const sortKey = (r) => String(r.date || "").padEnd(10, "0");
 const fmtScore = (s) => String(s).replace(".", ",");
 
 export default function Reviews() {
+  const { t, locale } = useApp();
   const { data } = useJson("data/reviews.json");
 
   const url = data?.bookingReviewsUrl || BOOKING_REVIEWS_URL;
@@ -30,54 +17,63 @@ export default function Reviews() {
     .sort((a, b) => sortKey(b).localeCompare(sortKey(a)))
     .slice(0, MAX);
 
+  const when = (r) => {
+    if (r.stay) return r.stay;
+    if (!r.date) return "";
+    const p = String(r.date).split("-");
+    const d = new Date(+p[0], +(p[1] || 1) - 1, +(p[2] || 1));
+    return Number.isNaN(d.valueOf()) ? r.date : longDate(locale, d);
+  };
+
   return (
-    <section id="avis" className="section section-alt">
+    <section id="avis" className="section section-alt" aria-labelledby="avis-title">
       <div className="container">
-        <p className="eyebrow">Avis des voyageurs</p>
-        <h2>Ce qu'en disent nos hôtes</h2>
+        <p className="eyebrow">{t("reviews.eyebrow")}</p>
+        <h2 id="avis-title">{t("reviews.title")}</h2>
 
         {data?.score != null && (
           <p className="reviews-badge">
             <span>{fmtScore(data.score)}</span>
-            {data.count != null && <span>{data.count} avis</span>}
-            sur Booking
+            {data.count != null && <span>{data.count} {t("reviews.reviewsWord")}</span>}
+            {t("reviews.scoreSuffix")}
           </p>
         )}
 
-        <p className="section-intro">
-          Les {MAX} avis les plus récents, repris de la page Booking de la chambre d'hôtes.
-        </p>
+        <p className="section-intro">{t("reviews.intro")}</p>
 
-        <div className="reviews" aria-live="polite">
+        <div className="reviews">
           {list.length === 0 ? (
             <p className="reviews-empty">
-              Les premiers avis seront bientôt affichés ici. En attendant, consultez-les sur{" "}
-              <a href={url} target="_blank" rel="noopener">Booking.com</a>.
+              {t("reviews.empty")}{" "}
+              <a href={url} target="_blank" rel="noopener noreferrer">Booking.com</a>
             </p>
           ) : (
             list.map((r, i) => (
               <article className="review" key={`${r.author}-${r.date}-${i}`}>
                 <header className="review-head">
                   {r.score != null && (
-                    <span className="review-score">{fmtScore(r.score)}</span>
+                    <span className="review-score" aria-hidden="true">{fmtScore(r.score)}</span>
                   )}
                   <div>
-                    <p className="review-author">{r.author || "Voyageur"}</p>
-                    {(r.stay || r.date) && (
-                      <p className="review-date">{r.stay || fmtDate(r.date)}</p>
-                    )}
+                    <p className="review-author">
+                      {r.author || t("reviews.anonymous")}
+                      {r.score != null && (
+                        <span className="visually-hidden"> — {fmtScore(r.score)}/10</span>
+                      )}
+                    </p>
+                    {when(r) && <p className="review-date">{when(r)}</p>}
                   </div>
                 </header>
                 {r.title && <p className="review-title">{r.title}</p>}
-                {r.positive && <p className="review-pos">＋ {r.positive}</p>}
-                {r.negative && <p className="review-neg">－ {r.negative}</p>}
+                {r.positive && <p className="review-pos"><span aria-hidden="true">＋ </span>{r.positive}</p>}
+                {r.negative && <p className="review-neg"><span aria-hidden="true">－ </span>{r.negative}</p>}
               </article>
             ))
           )}
         </div>
 
         <p className="note">
-          <a href={url} target="_blank" rel="noopener">Voir tous les avis sur Booking.com</a>
+          <a href={url} target="_blank" rel="noopener noreferrer">{t("reviews.seeAll")}</a>
         </p>
       </div>
     </section>

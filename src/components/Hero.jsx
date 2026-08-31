@@ -1,24 +1,27 @@
-import { asset } from "../lib/site.js";
+import { useApp } from "../app/store.jsx";
+import { photo, HERO_PHOTO } from "../lib/site.js";
 
 export default function Hero() {
+  const { t } = useApp();
+
   return (
     <section className="hero">
-      <div className="hero-media" role="img" aria-label="Vue de la maison" />
       <div
-        className="hero-photo"
-        style={{ backgroundImage: `url(${asset("photos/tc7.jpg")})` }}
+        className="hero-media"
+        style={{
+          backgroundImage: `url(${photo(HERO_PHOTO)}), linear-gradient(135deg, #4b6b4f 0%, #2d4632 55%, #24381f 100%)`,
+        }}
+        role="img"
+        aria-label={t("hero.imgAlt")}
       />
       <div className="hero-overlay" />
       <div className="container hero-content">
-        <p className="hero-kicker">Chambre d'hôtes · Onet-le-Château · Aveyron</p>
+        <p className="hero-kicker">{t("hero.kicker")}</p>
         <h1>Le Tilleul de Canac</h1>
-        <p className="hero-lead">
-          Une chambre familiale au calme, aux portes de Rodez : à moins de 5 minutes à pied de la
-          gare, à 2 km de la cathédrale et du musée Soulages.
-        </p>
+        <p className="hero-lead">{t("hero.lead")}</p>
         <div className="hero-actions">
-          <a className="btn" href="#reservation">Voir les disponibilités</a>
-          <a className="btn btn-ghost" href="#presentation">Découvrir la maison</a>
+          <a className="btn" href="#reservation">{t("hero.ctaAvailability")}</a>
+          <a className="btn btn-ghost" href="#presentation">{t("hero.ctaDiscover")}</a>
         </div>
       </div>
     </section>

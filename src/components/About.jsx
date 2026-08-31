@@ -1,33 +1,27 @@
-import { HIGHLIGHTS, PHOTOS } from "../lib/site.js";
+import { useApp } from "../app/store.jsx";
+import { photo } from "../lib/site.js";
 import Photo from "./Photo.jsx";
 
 export default function About() {
+  const { t } = useApp();
+
   return (
-    <section id="presentation" className="section">
+    <section id="presentation" className="section" aria-labelledby="presentation-title">
       <div className="container grid-2">
         <div>
-          <p className="eyebrow">La maison</p>
-          <h2>Une halte paisible entre ville et campagne</h2>
-          <p>
-            Le Tilleul de Canac vous accueille dans une maison au calme, entourée d'un jardin avec
-            terrasse. Idéalement située à Onet-le-Château, vous êtes à quelques minutes à pied de la
-            gare de Rodez et à deux pas du centre historique, tout en profitant de la tranquillité
-            des environs.
-          </p>
-          <p>
-            La chambre dispose d'un coin salon, d'une télévision et d'une salle de bains privative
-            (baignoire ou douche), avec sèche-cheveux et articles de toilette offerts. Un coin repas
-            avec kitchenette équipée (micro-ondes, réfrigérateur, vaisselle) est à votre disposition.
-          </p>
+          <p className="eyebrow">{t("about.eyebrow")}</p>
+          <h2 id="presentation-title">{t("about.title")}</h2>
+          <p>{t("about.p1")}</p>
+          <p>{t("about.p2")}</p>
           <ul className="feature-list">
-            {HIGHLIGHTS.map((h) => (
+            {t("about.highlights").map((h) => (
               <li key={h}>{h}</li>
             ))}
           </ul>
         </div>
         <figure className="figure">
-          <Photo src={PHOTOS[0].src} alt="La maison et son jardin" />
-          <figcaption>Le jardin et sa terrasse</figcaption>
+          <Photo src={photo("tc1.jpg")} alt={t("about.figCaption")} />
+          <figcaption>{t("about.figCaption")}</figcaption>
         </figure>
       </div>
     </section>

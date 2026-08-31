@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-/** Image avec repli « Photo à venir » si le fichier est absent. */
-export default function Photo({ src, alt, className, placeholderLabel = "Photo à venir" }) {
+/** Image avec repli visuel si le fichier est absent. */
+export default function Photo({ src, alt, className, placeholderLabel = "" }) {
   const [failed, setFailed] = useState(false);
 
   if (failed) {
     return (
-      <div className={`photo-placeholder ${className || ""}`.trim()} aria-label={alt}>
-        <span>{placeholderLabel}</span>
+      <div className={`photo-placeholder ${className || ""}`.trim()} role="img" aria-label={alt}>
+        {placeholderLabel ? <span>{placeholderLabel}</span> : null}
       </div>
     );
   }
@@ -18,6 +18,7 @@ export default function Photo({ src, alt, className, placeholderLabel = "Photo �
       src={src}
       alt={alt}
       loading="lazy"
+      decoding="async"
       onError={() => setFailed(true)}
     />
   );

@@ -63,6 +63,7 @@
         <ul id="menu">
           <li><a href="#presentation">La maison</a></li>
           <li><a href="#chambre">La chambre</a></li>
+          <li><a href="#avis">Avis</a></li>
           <li><a href="#environs">Les environs</a></li>
           <li><a href="#reservation">Disponibilités</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -150,7 +151,26 @@
       </div>
     </section>
 
-    <section id="environs" class="section section-alt">
+    <section id="avis" class="section section-alt">
+      <div class="container">
+        <p class="eyebrow">Avis des voyageurs</p>
+        <h2>Ce qu'en disent nos hôtes</h2>
+        <p class="reviews-badge" hidden>
+          <span id="reviews-score">–</span>
+          <span id="reviews-count"></span>
+          sur Booking
+        </p>
+        <p class="section-intro">Les 5 avis les plus récents, repris de la page Booking de la chambre d'hôtes.</p>
+
+        <div class="reviews" id="reviews" aria-live="polite">
+          <p class="reviews-empty">Chargement des avis…</p>
+        </div>
+
+        <p class="note"><a id="reviews-booking-link" href="https://www.booking.com/hotel/fr/chambre-d-39-hote-rodez.fr.html#tab-reviews" target="_blank" rel="noopener">Voir tous les avis sur Booking.com</a></p>
+      </div>
+    </section>
+
+    <section id="environs" class="section">
       <div class="container grid-2">
         <div>
           <p class="eyebrow">Les environs</p>
@@ -173,7 +193,7 @@
       </div>
     </section>
 
-    <section id="reservation" class="section">
+    <section id="reservation" class="section section-alt">
       <div class="container">
         <p class="eyebrow">Disponibilités &amp; réservation</p>
         <h2>Vérifiez les dates libres</h2>
@@ -198,7 +218,7 @@
       </div>
     </section>
 
-    <section id="contact" class="section section-alt">
+    <section id="contact" class="section">
       <div class="container grid-2">
         <div>
           <p class="eyebrow">Contact</p>
@@ -233,5 +253,6 @@
   </footer>
 
   <script src="assets/js/calendar.js" defer></script>
+  <script src="assets/js/reviews.js" defer></script>
 </body>
 </html>

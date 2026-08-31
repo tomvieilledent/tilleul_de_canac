@@ -405,6 +405,53 @@ p { margin: 0 0 1rem; }
 .swatch-booked { background: repeating-linear-gradient(-45deg, #e7ded0, #e7ded0 3px, #ddd2bf 3px, #ddd2bf 6px); }
 .booking-updated { font-size: 0.8rem; color: var(--muted); margin-top: 14px; margin-bottom: 0; }
 
+/* Avis */
+.reviews-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0 0 4px;
+}
+.reviews-badge #reviews-score {
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 6px;
+}
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+.review {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+}
+.review-head { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 10px; }
+.review-score {
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.review-author { margin: 0; font-weight: 600; }
+.review-country { color: var(--muted); font-weight: 400; }
+.review-date { margin: 0; font-size: 0.82rem; color: var(--muted); }
+.review-title { font-family: var(--font-serif); font-size: 1.15rem; color: var(--green-dark); margin: 0 0 6px; }
+.review p:last-child { margin-bottom: 0; }
+.review-pos { color: var(--green-dark); }
+.review-neg { color: var(--terracotta); }
+.reviews-empty { color: var(--muted); }
+
 /* Footer */
 .site-footer {
   background: var(--green-dark);

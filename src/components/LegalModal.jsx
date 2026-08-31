@@ -3,6 +3,7 @@ import { useApp } from "../app/store.jsx";
 
 export default function LegalModal({ which, onClose }) {
   const { t } = useApp();
+  const dialogRef = useRef(null);
   const closeRef = useRef(null);
   const lastFocus = useRef(null);
   const open = which === "legal" || which === "privacy";
@@ -14,7 +15,24 @@ export default function LegalModal({ which, onClose }) {
     document.body.style.overflow = "hidden";
 
     const onKey = (e) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab" || !dialogRef.current) return;
+      const items = dialogRef.current.querySelectorAll(
+        'a[href], button, [tabindex]:not([tabindex="-1"])'
+      );
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
     document.addEventListener("keydown", onKey);
     return () => {
@@ -36,6 +54,7 @@ export default function LegalModal({ which, onClose }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="modal-title"
+        ref={dialogRef}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-head">

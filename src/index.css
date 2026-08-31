@@ -196,6 +196,7 @@ p { margin: 0 0 1rem; }
   justify-content: space-between;
   gap: 12px;
   min-height: 64px;
+  max-width: none;
 }
 .brand {
   display: inline-flex;

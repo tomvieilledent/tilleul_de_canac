@@ -218,10 +218,19 @@ p { margin: 0 0 1rem; }
   .brand-text span { display: none; }
 }
 
-.header-tools {
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.tools-desktop { display: none; }
+.menu-tools {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin-top: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
 }
 
 .lang-switch select {
@@ -641,6 +650,8 @@ p code, .note code {
   .site-nav li a { padding: 6px 2px; }
   .site-nav li a:hover { background: none; }
   .site-nav .btn { margin-top: 0; }
+  .menu-tools { display: none; }
+  .tools-desktop { display: flex; align-items: center; gap: 8px; }
 }
 
 @media (min-width: 1040px) {

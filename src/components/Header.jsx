@@ -44,10 +44,7 @@ export default function Header() {
           </span>
         </a>
 
-        <div className="header-tools">
-          <LangSwitch />
-          <ThemeToggle />
-
+        <div className="header-right">
           <nav className="site-nav" aria-label={t("nav.menu")} ref={navRef}>
             <button
               type="button"
@@ -71,8 +68,17 @@ export default function Header() {
                   {t("nav.book")}
                 </a>
               </li>
+              <li className="menu-tools">
+                <LangSwitch />
+                <ThemeToggle />
+              </li>
             </ul>
           </nav>
+
+          <div className="tools-desktop">
+            <LangSwitch />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>

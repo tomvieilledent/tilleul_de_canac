@@ -48,13 +48,25 @@ Déjà configuré : **Settings → Pages → Source : GitHub Actions**. Chaque p
 
 ## Photos
 
-Déposer les images dans `public/photos/` (paysage, ratio 4:3, ~1600 px, JPEG < 400 Ko) :
+Déposer les JPEG source dans `public/photos/` :
 
-- `tc1.jpg` … `tc6.jpg` : galerie (nombre réglable via `PHOTO_COUNT` dans `src/lib/site.js`)
+- `tc1.jpg` … `tc6.jpg` : galerie (liste réglable via `GALLERY_PHOTOS` dans `src/lib/site.js`)
 - `tc7.jpg` : photo de la maison, en fond du bandeau d'accueil
 
-Tant qu'une photo est absente, le site affiche un bloc « Photo à venir » (galerie) ou
-le dégradé vert (accueil).
+Puis générer les dérivés responsives (WebP 400/800/1024 px + repli JPEG optimisé) :
+
+```bash
+npm run images        # nécessite cwebp + magick
+```
+
+Le site sert du WebP responsive (`<picture>` + `srcset`) avec repli JPEG, et
+précharge l'image d'accueil (LCP). Tant qu'une photo est absente, un bloc de repli
+s'affiche (galerie) ou le dégradé vert (accueil).
+
+> **Cache HTTP** : GitHub Pages impose `Cache-Control: max-age=600` et ne permet pas
+> de le modifier. L'audit Lighthouse « efficient cache lifetimes » restera donc
+> non optimal tant que le site est hébergé sur Pages (un CDN devant, type Cloudflare,
+> le corrigerait).
 
 ## Calendrier des disponibilités
 

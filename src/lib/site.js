@@ -15,10 +15,13 @@ export const CONTACT = {
 // 270 chemin de Canac, 12850 Onet-le-Château (coordonnées de la fiche OSM du gîte)
 export const MAP = { lat: 44.36362, lon: 2.58369, zoom: 16 };
 
-// Photos dans public/photos/ : tc1.jpg … (galerie) et tc7.jpg (fond du bandeau d'accueil).
-export const PHOTO_COUNT = 6;
-export const GALLERY_PHOTOS = Array.from({ length: PHOTO_COUNT }, (_, i) => `tc${i + 1}.jpg`);
-export const HERO_PHOTO = "tc7.jpg";
+// Photos dans public/photos/ : pour chaque nom, tcN.jpg (repli 1024) + tcN-400/800/1024.webp.
+// Régénérer avec : npm run images
+export const PHOTO_WIDTHS = [400, 800, 1024];
+export const GALLERY_PHOTOS = ["tc1", "tc2", "tc3", "tc4", "tc5", "tc6"];
+export const HERO_PHOTO = "tc7";
 
 export const asset = (path) => `${import.meta.env.BASE_URL}${String(path).replace(/^\//, "")}`;
-export const photo = (name) => asset(`photos/${name}`);
+export const photoJpg = (name) => asset(`photos/${name}.jpg`);
+export const photoWebpSrcSet = (name) =>
+  PHOTO_WIDTHS.map((w) => `${asset(`photos/${name}-${w}.webp`)} ${w}w`).join(", ");

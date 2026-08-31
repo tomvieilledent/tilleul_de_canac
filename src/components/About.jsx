@@ -1,5 +1,4 @@
 import { useApp } from "../app/store.jsx";
-import { photo } from "../lib/site.js";
 import Photo from "./Photo.jsx";
 
 export default function About() {
@@ -20,7 +19,7 @@ export default function About() {
           </ul>
         </div>
         <figure className="figure">
-          <Photo src={photo("tc1.jpg")} alt={t("about.figCaption")} />
+          <Photo name="tc1" alt={t("about.figCaption")} sizes="(min-width: 900px) 500px, 92vw" />
           <figcaption>{t("about.figCaption")}</figcaption>
         </figure>
       </div>

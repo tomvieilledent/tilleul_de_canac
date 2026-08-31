@@ -1,19 +1,30 @@
+import { useState } from "react";
 import { useApp } from "../app/store.jsx";
-import { photo, HERO_PHOTO } from "../lib/site.js";
+import { photoJpg, photoWebpSrcSet, HERO_PHOTO } from "../lib/site.js";
 
 export default function Hero() {
   const { t } = useApp();
+  const [failed, setFailed] = useState(false);
 
   return (
     <section className="hero">
-      <div
-        className="hero-media"
-        style={{
-          backgroundImage: `url(${photo(HERO_PHOTO)}), linear-gradient(135deg, #4b6b4f 0%, #2d4632 55%, #24381f 100%)`,
-        }}
-        role="img"
-        aria-label={t("hero.imgAlt")}
-      />
+      <div className="hero-fallback" aria-hidden="true" />
+      {!failed && (
+        <picture>
+          <source type="image/webp" srcSet={photoWebpSrcSet(HERO_PHOTO)} sizes="100vw" />
+          <img
+            className="hero-media"
+            src={photoJpg(HERO_PHOTO)}
+            alt=""
+            width={1024}
+            height={768}
+            sizes="100vw"
+            fetchPriority="high"
+            decoding="async"
+            onError={() => setFailed(true)}
+          />
+        </picture>
+      )}
       <div className="hero-overlay" />
       <div className="container hero-content">
         <p className="hero-kicker">{t("hero.kicker")}</p>

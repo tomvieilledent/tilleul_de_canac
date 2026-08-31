@@ -1,15 +1,17 @@
 # Photos
 
-Déposer ici les photos de la chambre d'hôtes, nommées :
+Déposer les photos **source** en JPEG, nommées :
 
-- `tc1.jpg` … `tc6.jpg` : galerie (nombre réglable via `PHOTO_COUNT` dans `src/lib/site.js`)
-- `tc7.jpg` : photo de la maison, en fond du bandeau vert d'accueil
+- `tc1.jpg` … `tc6.jpg` : galerie
+- `tc7.jpg` : photo de la maison (fond du bandeau d'accueil)
 
-Extension attendue : `.jpg`.
+Puis générer les dérivés (WebP 400 / 800 / 1024 px + repli JPEG optimisé) :
 
-Recommandations :
+```bash
+npm run images        # nécessite cwebp (libwebp) et magick (ImageMagick)
+```
 
-- Format paysage, ratio 4:3, ~1600 px de large
-- JPEG optimisé (< 400 Ko par image si possible)
+Cela crée `tcN-400.webp`, `tcN-800.webp`, `tcN-1024.webp` et recompresse `tcN.jpg`.
+Le nombre de photos de galerie se règle dans `GALLERY_PHOTOS` (`src/lib/site.js`).
 
-Tant qu'une photo est absente, le site affiche automatiquement un bloc « Photo à venir » à la place.
+Tant qu'une photo est absente, le site affiche un bloc de repli.

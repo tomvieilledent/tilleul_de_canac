@@ -1,7 +1,13 @@
+import { asset } from "../lib/site.js";
+
 export default function Hero() {
   return (
     <section className="hero">
-      <div className="hero-media" role="img" aria-label="Vue du jardin de la chambre d'hôtes" />
+      <div className="hero-media" role="img" aria-label="Vue de la maison" />
+      <div
+        className="hero-photo"
+        style={{ backgroundImage: `url(${asset("photos/tc7.jpg")})` }}
+      />
       <div className="hero-overlay" />
       <div className="container hero-content">
         <p className="hero-kicker">Chambre d'hôtes · Onet-le-Château · Aveyron</p>

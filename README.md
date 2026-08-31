@@ -48,10 +48,13 @@ Déjà configuré : **Settings → Pages → Source : GitHub Actions**. Chaque p
 
 ## Photos
 
-Déposer les images dans `public/photos/` : `tc1.jpg`, `tc2.jpg`, … (paysage,
-ratio 4:3, ~1600 px, JPEG < 400 Ko). Le nombre affiché se règle via `PHOTO_COUNT`
-dans `src/lib/site.js`. Tant qu'une photo est absente, le site affiche un bloc
-« Photo à venir ».
+Déposer les images dans `public/photos/` (paysage, ratio 4:3, ~1600 px, JPEG < 400 Ko) :
+
+- `tc1.jpg` … `tc6.jpg` : galerie (nombre réglable via `PHOTO_COUNT` dans `src/lib/site.js`)
+- `tc7.jpg` : photo de la maison, en fond du bandeau d'accueil
+
+Tant qu'une photo est absente, le site affiche un bloc « Photo à venir » (galerie) ou
+le dégradé vert (accueil).
 
 ## Calendrier des disponibilités
 

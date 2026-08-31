@@ -219,11 +219,6 @@ p { margin: 0 0 1rem; }
   .brand-text span { display: none; }
 }
 
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
 .tools-desktop { display: none; }
 .menu-tools {
   display: flex;
@@ -635,6 +630,12 @@ p code, .note code {
   .booking-block { grid-template-columns: 1.6fr 1fr; align-items: start; }
   .map { height: 380px; }
 
+  .header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+  .brand { justify-self: start; }
+  .site-nav { justify-self: center; }
   .nav-toggle { display: none; }
   .site-nav ul {
     display: flex;
@@ -652,7 +653,12 @@ p code, .note code {
   .site-nav li a:hover { background: none; }
   .site-nav .btn { margin-top: 0; }
   .menu-tools { display: none; }
-  .tools-desktop { display: flex; align-items: center; gap: 8px; }
+  .tools-desktop {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-self: end;
+  }
 }
 
 @media (min-width: 1040px) {

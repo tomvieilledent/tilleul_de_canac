@@ -44,41 +44,39 @@ export default function Header() {
           </span>
         </a>
 
-        <div className="header-right">
-          <nav className="site-nav" aria-label={t("nav.menu")} ref={navRef}>
-            <button
-              type="button"
-              className="nav-toggle"
-              aria-expanded={open}
-              aria-controls="primary-menu"
-              onClick={() => setOpen((v) => !v)}
-            >
-              {t("nav.menu")}
-            </button>
-            <ul id="primary-menu" className={open ? "is-open" : undefined}>
-              {links.map(([href, label]) => (
-                <li key={href}>
-                  <a href={href} onClick={() => setOpen(false)}>
-                    {label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a className="btn btn-small" href="#reservation" onClick={() => setOpen(false)}>
-                  {t("nav.book")}
+        <nav className="site-nav" aria-label={t("nav.menu")} ref={navRef}>
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={open}
+            aria-controls="primary-menu"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {t("nav.menu")}
+          </button>
+          <ul id="primary-menu" className={open ? "is-open" : undefined}>
+            {links.map(([href, label]) => (
+              <li key={href}>
+                <a href={href} onClick={() => setOpen(false)}>
+                  {label}
                 </a>
               </li>
-              <li className="menu-tools">
-                <LangSwitch />
-                <ThemeToggle />
-              </li>
-            </ul>
-          </nav>
+            ))}
+            <li>
+              <a className="btn btn-small" href="#reservation" onClick={() => setOpen(false)}>
+                {t("nav.book")}
+              </a>
+            </li>
+            <li className="menu-tools">
+              <LangSwitch />
+              <ThemeToggle />
+            </li>
+          </ul>
+        </nav>
 
-          <div className="tools-desktop">
-            <LangSwitch />
-            <ThemeToggle />
-          </div>
+        <div className="tools-desktop">
+          <LangSwitch />
+          <ThemeToggle />
         </div>
       </div>
     </header>

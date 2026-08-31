@@ -1,4 +1,5 @@
-import { DISTANCES, MAP } from "../lib/site.js";
+import { DISTANCES } from "../lib/site.js";
+import Map from "./Map.jsx";
 
 export default function Surroundings() {
   return (
@@ -21,15 +22,7 @@ export default function Surroundings() {
           </p>
         </div>
         <div className="map-wrap">
-          <iframe
-            title="Localisation à Onet-le-Château"
-            src={MAP.embed}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-          <a className="map-link" href={MAP.link} target="_blank" rel="noopener">
-            Ouvrir dans OpenStreetMap
-          </a>
+          <Map />
         </div>
       </div>
     </section>

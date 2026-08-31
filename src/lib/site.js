@@ -13,11 +13,12 @@ export const CONTACT = {
   languages: "Français, anglais, espagnol",
 };
 
-// Carte OpenStreetMap (coordonnées approximatives — à affiner)
+// Carte — 270 chemin de Canac, 12850 Onet-le-Château (coordonnées de la fiche OSM du gîte)
 export const MAP = {
-  embed:
-    "https://www.openstreetmap.org/export/embed.html?bbox=2.5300%2C44.3520%2C2.6050%2C44.3880&layer=mapnik&marker=44.3700%2C2.5675",
-  link: "https://www.openstreetmap.org/?mlat=44.3700&mlon=2.5675#map=15/44.3700/2.5675",
+  lat: 44.36362,
+  lon: 2.58369,
+  zoom: 16,
+  label: "Le Tilleul de Canac — 270 chemin de Canac, 12850 Onet-le-Château",
 };
 
 export const ROOM_FEATURES = [

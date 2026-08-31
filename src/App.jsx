@@ -7,7 +7,6 @@ import Reviews from "./components/Reviews.jsx";
 import Surroundings from "./components/Surroundings.jsx";
 import Booking from "./components/Booking.jsx";
 import Contact from "./components/Contact.jsx";
-import Footer from "./components/Footer.jsx";
 
 export default function App() {
   return (
@@ -24,7 +23,6 @@ export default function App() {
         <Booking />
         <Contact />
       </main>
-      <Footer />
     </>
   );
 }

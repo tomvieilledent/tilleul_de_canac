@@ -78,23 +78,21 @@ Chaque **lundi matin**, le workflow *Rappel avis Booking* crée une *issue* de r
   "reviews": [
     {
       "author": "Grégoire",
-      "country": "",
-      "date": "2026-08",
+      "date": "2026-08-30",
       "stay": "1 nuit · août 2026",
       "score": 9.0,
       "title": "Fabuleux",
       "positive": "Proximité du centre, calme, dimensions de la chambre, petit-déjeuner.",
-      "negative": "Absence de climatisation, mais ventilateur efficace.",
-      "text": ""
+      "negative": "Absence de climatisation mais ventilateur efficace."
     }
   ]
 }
 ```
 
-Champs : `author` (nom), `date` (`AAAA-MM`, sert au tri), `stay` (texte libre affiché,
-ex. « 1 nuit · août 2026 »), `title`, `score` (sur 10), et soit `text`, soit le couple
-`positive`/`negative` (format Booking). `country` optionnel.
-Tant que `reviews` est vide, le site renvoie vers la page avis Booking.
+Champs : `author` (nom), `date` (`AAAA-MM-JJ`, sert au tri), `stay` (texte affiché,
+ex. « 1 nuit · août 2026 »), `title`, `score` (sur 10), `positive`, `negative`
+(laisser `""` si vide). Tant que `reviews` est vide, le site renvoie vers la page
+avis Booking.
 
 ## Développement local
 

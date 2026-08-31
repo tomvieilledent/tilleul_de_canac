@@ -444,7 +444,6 @@ p { margin: 0 0 1rem; }
   flex-shrink: 0;
 }
 .review-author { margin: 0; font-weight: 600; }
-.review-country { color: var(--muted); font-weight: 400; }
 .review-date { margin: 0; font-size: 0.82rem; color: var(--muted); }
 .review-title { font-family: var(--font-serif); font-size: 1.15rem; color: var(--green-dark); margin: 0 0 6px; }
 .review p:last-child { margin-bottom: 0; }

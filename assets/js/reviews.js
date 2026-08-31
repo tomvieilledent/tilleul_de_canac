@@ -75,20 +75,14 @@
       if (r.score != null) {
         parts.push('<span class="review-score">' + esc(String(r.score).replace(".", ",")) + "</span>");
       }
-      parts.push("<div><p class=\"review-author\">" + esc(r.author || "Voyageur"));
-      if (r.country) parts.push(' <span class="review-country">· ' + esc(r.country) + "</span>");
-      parts.push("</p>");
+      parts.push("<div><p class=\"review-author\">" + esc(r.author || "Voyageur") + "</p>");
       var when = r.stay || fmtDate(r.date);
       if (when) parts.push('<p class="review-date">' + esc(when) + "</p>");
       parts.push("</div></header>");
 
       if (r.title) parts.push('<p class="review-title">' + esc(r.title) + "</p>");
-      if (r.text) {
-        parts.push("<p>" + esc(r.text) + "</p>");
-      } else {
-        if (r.positive) parts.push('<p class="review-pos">＋ ' + esc(r.positive) + "</p>");
-        if (r.negative) parts.push('<p class="review-neg">－ ' + esc(r.negative) + "</p>");
-      }
+      if (r.positive) parts.push('<p class="review-pos">＋ ' + esc(r.positive) + "</p>");
+      if (r.negative) parts.push('<p class="review-neg">－ ' + esc(r.negative) + "</p>");
       parts.push("</article>");
       return parts.join("");
     }).join("");

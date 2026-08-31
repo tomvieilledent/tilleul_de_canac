@@ -7,14 +7,48 @@
   "reviews": [
     {
       "author": "Grégoire",
-      "country": "",
-      "date": "2026-08",
+      "date": "2026-08-30",
       "stay": "1 nuit · août 2026",
       "score": 9.0,
       "title": "Fabuleux",
       "positive": "Proximité du centre, calme, dimensions de la chambre, petit-déjeuner.",
-      "negative": "Absence de climatisation, mais ventilateur efficace.",
-      "text": ""
+      "negative": "Absence de climatisation mais ventilateur efficace."
+    },
+    {
+      "author": "Marie",
+      "date": "2026-08-23",
+      "stay": "1 nuit · août 2026",
+      "score": 8.0,
+      "title": "Propriétaire accueillante ; petit déjeuner copieux",
+      "positive": "Accueil chaleureux. Petit déjeuner copieux et délicieux.",
+      "negative": ""
+    },
+    {
+      "author": "Pascale",
+      "date": "2026-08-17",
+      "stay": "1 nuit · août 2026",
+      "score": 9.0,
+      "title": "Fabuleux",
+      "positive": "Tout était parfait : l'accueil, la propreté, le confort, l'espace, la décoration et l'excellent petit déjeuner. Une très bonne adresse à recommander.",
+      "negative": ""
+    },
+    {
+      "author": "Aurélien",
+      "date": "2026-08-15",
+      "stay": "1 nuit · août 2026",
+      "score": 9.0,
+      "title": "Paisible et accueillant !",
+      "positive": "Emplacement idéal pour être en ville mais au calme. Petit-déjeuner copieux et de très bonne qualité. Hôtes très accommodants, qui m'ont laissé mettre mon vélo en sécurité dans leur garage. Parfait pour une halte !",
+      "negative": ""
+    },
+    {
+      "author": "Daniel",
+      "date": "2026-08-14",
+      "stay": "2 nuits · août 2026",
+      "score": 10,
+      "title": "Super !!",
+      "positive": "Accueil formidable, comme dans la famille. Marie est une personne très sympathique et de bon conseil pour le tourisme alentour. Les petits déjeuners sont super, avec des produits faits maison. Je recommande fortement.",
+      "negative": "Rien."
     }
   ]
 }

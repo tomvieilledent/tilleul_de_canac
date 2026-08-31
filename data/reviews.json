@@ -1,8 +1,20 @@
 {
-  "updated": null,
+  "updated": "2026-08-31",
   "source": "manual",
   "bookingReviewsUrl": "https://www.booking.com/hotel/fr/chambre-d-39-hote-rodez.fr.html#tab-reviews",
   "score": null,
   "count": null,
-  "reviews": []
+  "reviews": [
+    {
+      "author": "Grégoire",
+      "country": "",
+      "date": "2026-08",
+      "stay": "1 nuit · août 2026",
+      "score": 9.0,
+      "title": "Fabuleux",
+      "positive": "Proximité du centre, calme, dimensions de la chambre, petit-déjeuner.",
+      "negative": "Absence de climatisation, mais ventilateur efficace.",
+      "text": ""
+    }
+  ]
 }

@@ -78,7 +78,8 @@
       parts.push("<div><p class=\"review-author\">" + esc(r.author || "Voyageur"));
       if (r.country) parts.push(' <span class="review-country">· ' + esc(r.country) + "</span>");
       parts.push("</p>");
-      if (r.date) parts.push('<p class="review-date">' + esc(fmtDate(r.date)) + "</p>");
+      var when = r.stay || fmtDate(r.date);
+      if (when) parts.push('<p class="review-date">' + esc(when) + "</p>");
       parts.push("</div></header>");
 
       if (r.title) parts.push('<p class="review-title">' + esc(r.title) + "</p>");

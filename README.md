@@ -22,7 +22,7 @@ src/
   lib/calendar.js              Helpers de dates du calendrier
 public/
   favicon.svg                  Logo — feuille de tilleul
-  photos/                      photo-1.jpg … photo-6.jpg
+  photos/                      tc1.jpg, tc2.jpg, …
   data/availability.json       Disponibilités (généré automatiquement)
   data/reviews.json            5 derniers avis (édité à la main)
 scripts/fetch-ical.mjs         iCal Booking -> public/data/availability.json
@@ -48,9 +48,10 @@ Déjà configuré : **Settings → Pages → Source : GitHub Actions**. Chaque p
 
 ## Photos
 
-Déposer les images dans `public/photos/` : `photo-1.jpg` … `photo-6.jpg`
-(paysage, ratio 4:3, ~1600 px, JPEG < 400 Ko). Tant qu'une photo est absente,
-le site affiche un bloc « Photo à venir ».
+Déposer les images dans `public/photos/` : `tc1.jpg`, `tc2.jpg`, … (paysage,
+ratio 4:3, ~1600 px, JPEG < 400 Ko). Le nombre affiché se règle via `PHOTO_COUNT`
+dans `src/lib/site.js`. Tant qu'une photo est absente, le site affiche un bloc
+« Photo à venir ».
 
 ## Calendrier des disponibilités
 

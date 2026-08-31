@@ -15,8 +15,7 @@ export default function Gallery() {
           ))}
         </div>
         <p className="note">
-          Les photos définitives se placent dans <code>public/photos/</code> (photo-1.jpg …
-          photo-6.jpg).
+          Les photos définitives se placent dans <code>public/photos/</code> (tc1.jpg, tc2.jpg …).
         </p>
       </div>
     </section>

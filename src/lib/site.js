@@ -60,9 +60,10 @@ export const DISTANCES = [
   { place: "Golf", value: "2 km" },
 ];
 
-// Photos attendues dans public/photos/ (photo-1.jpg …). BASE_URL gère le préfixe GitHub Pages.
-export const PHOTOS = Array.from({ length: 6 }, (_, i) => ({
-  src: `${import.meta.env.BASE_URL}photos/photo-${i + 1}.jpg`,
+// Photos attendues dans public/photos/ : tc1.jpg, tc2.jpg, … BASE_URL gère le préfixe GitHub Pages.
+export const PHOTO_COUNT = 6;
+export const PHOTOS = Array.from({ length: PHOTO_COUNT }, (_, i) => ({
+  src: `${import.meta.env.BASE_URL}photos/tc${i + 1}.jpg`,
   alt: `Photo de la chambre d'hôtes ${i + 1}`,
 }));
 

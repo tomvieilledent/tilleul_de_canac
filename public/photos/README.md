@@ -2,7 +2,10 @@
 
 Déposer ici les photos de la chambre d'hôtes, nommées :
 
-- `photo-1.jpg` … `photo-6.jpg`
+- `tc1.jpg`, `tc2.jpg`, `tc3.jpg`, … (`tc` + numéro)
+
+Le nombre de photos affichées se règle avec `PHOTO_COUNT` dans `src/lib/site.js`
+(6 par défaut). Extension attendue : `.jpg`.
 
 Recommandations :
 

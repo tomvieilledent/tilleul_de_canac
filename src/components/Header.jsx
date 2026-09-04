@@ -14,6 +14,7 @@ export default function Header() {
     ["#chambre", t("nav.room")],
     ["#avis", t("nav.reviews")],
     ["#environs", t("nav.surroundings")],
+    ["#visiter", t("nav.visit")],
     ["#reservation", t("nav.availability")],
     ["#contact", t("nav.contact")],
   ];

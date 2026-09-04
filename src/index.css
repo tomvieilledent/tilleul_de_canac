@@ -417,6 +417,30 @@ p code, .note code {
 .card h3 { color: var(--accent); }
 .card p { margin: 0; color: var(--text-muted); }
 
+/* ---- Section "Visiter autour de Rodez" ---- */
+.visit-cards .card { display: flex; flex-direction: column; gap: 8px; }
+.card-link { align-self: flex-start; margin-top: auto; font-weight: 600; }
+.visit-subtitle { margin-top: 48px; }
+.visit-office {
+  margin-top: 40px;
+  display: grid;
+  gap: 20px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.visit-office-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+@media (min-width: 900px) {
+  .visit-cards { grid-template-columns: repeat(3, 1fr); }
+  .visit-office { grid-template-columns: 1fr auto; align-items: center; }
+}
+
 .gallery { list-style: none; display: grid; gap: 12px; margin-top: 24px; }
 .gallery-item {
   margin: 0;

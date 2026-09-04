@@ -7,6 +7,7 @@ import Room from "./components/Room.jsx";
 import Gallery from "./components/Gallery.jsx";
 import Reviews from "./components/Reviews.jsx";
 import Surroundings from "./components/Surroundings.jsx";
+import VisitAround from "./components/VisitAround.jsx";
 import Booking from "./components/Booking.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -27,6 +28,7 @@ export default function App() {
         <Gallery />
         <Reviews />
         <Surroundings />
+        <VisitAround />
         <Booking />
         <Contact />
       </main>

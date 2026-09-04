@@ -1,0 +1,11 @@
+.git
+.github
+node_modules
+dist
+scratch_orig
+*.log
+.DS_Store
+*.local
+Dockerfile
+.dockerignore
+README.md
